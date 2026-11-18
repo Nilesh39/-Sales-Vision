@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SalesVision – Interactive Power BI Portfolio Showcase</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandNavy: '#0F172A',
+            brandBlue: '#2563EB',
+            brandMint: '#10B981',
+            brandSlate: '#1E293B',
+            canvasBg: '#F8FAFC'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #F8FAFC; }
+    .kpi-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .chart-card { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.04); }
+  </style>
+</head>
+<body class="text-slate-800">
+
+  <!-- TOP APP HEADER -->
+  <header class="bg-brandNavy text-white px-6 py-4 flex flex-wrap justify-between items-center shadow-md">
+    <div class="flex items-center space-x-3">
+      <div class="w-9 h-9 bg-brandBlue rounded-lg flex items-center justify-center font-bold text-white text-lg">
+        SV
+      </div>
+      <div>
+        <h1 class="text-xl font-bold tracking-tight">SalesVision – Executive Sales Intelligence</h1>
+        <p class="text-xs text-slate-300">Portfolio Project by <span class="text-brandMint font-semibold">Nilesh</span> | BCA Graduate</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 mt-2 sm:mt-0">
+      <span class="text-xs bg-brandSlate px-3 py-1.5 rounded-md border border-slate-700 text-slate-300">Dataset: 7,500 Transactions (2023–2025)</span>
+      <a href="https://github.com/Nilesh39/-Sales-Vision" target="_blank" class="text-xs bg-brandBlue hover:bg-blue-600 px-3 py-1.5 rounded-md text-white font-medium flex items-center space-x-1 transition">
+        <span>View GitHub Repo</span>
+        <span>↗</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <nav class="bg-white border-b border-slate-200 px-6 py-2.5 flex space-x-2 overflow-x-auto text-sm font-medium">
+    <button onclick="switchTab('exec')" id="tab-exec" class="px-4 py-1.5 rounded-md bg-brandBlue text-white shadow-sm transition">1. Executive Overview</button>
+    <button onclick="switchTab('trends')" id="tab-trends" class="px-4 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 transition">2. Sales Trends & YoY</button>
+    <button onclick="switchTab('products')" id="tab-products" class="px-4 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 transition">3. Product Performance</button>
+    <button onclick="switchTab('regions')" id="tab-regions" class="px-4 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 transition">4. Regional Breakdown</button>
+    <button onclick="switchTab('insights')" id="tab-insights" class="px-4 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 transition">5. Strategic Insights & ROI</button>
+  </nav>
+
+  <!-- MAIN CANVAS -->
+  <main class="max-w-7xl mx-auto p-6 space-y-6">
+
+    <!-- GLOBAL SLICERS BAR -->
+    <div class="bg-white p-3.5 rounded-xl border border-slate-200 flex flex-wrap items-center justify-between gap-4 text-sm shadow-sm">
+      <div class="flex items-center space-x-2">
+        <span class="text-slate-500 font-medium">📅 Filter by Year:</span>
+        <button onclick="filterYear('All')" id="btn-yr-all" class="px-3 py-1 rounded-md text-xs font-semibold bg-brandBlue text-white">All (2023-2025)</button>
+        <button onclick="filterYear('2023')" id="btn-yr-2023" class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">2023</button>
+        <button onclick="filterYear('2024')" id="btn-yr-2024" class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">2024</button>
+        <button onclick="filterYear('2025')" id="btn-yr-2025" class="px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">2025</button>
+      </div>
+      <div class="text-xs text-slate-400 italic">
+        *Interactive preview simulates Power BI DAX dynamic filter context
+      </div>
+    </div>
+
+    <!-- TAB 1: EXECUTIVE OVERVIEW -->
+    <section id="section-exec" class="space-y-6">
+      <!-- 5 KPI CARDS -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="kpi-card p-4">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Sales</p>
+          <h3 id="kpi-sales" class="text-2xl font-bold text-brandNavy mt-1">$4,485,118</h3>
+          <span class="text-xs font-medium text-emerald-600 flex items-center mt-1">▲ Net Revenue</span>
+        </div>
+        <div class="kpi-card p-4">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Profit</p>
+          <h3 id="kpi-profit" class="text-2xl font-bold text-brandNavy mt-1">$1,423,288</h3>
+          <span class="text-xs font-medium text-emerald-600 flex items-center mt-1">▲ Retained Margin</span>
+        </div>
+        <div class="kpi-card p-4">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Profit Margin %</p>
+          <h3 id="kpi-margin" class="text-2xl font-bold text-brandNavy mt-1">31.73%</h3>
+          <span class="text-xs font-medium text-slate-400 mt-1">Target: > 30%</span>
+        </div>
+        <div class="kpi-card p-4">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Orders</p>
+          <h3 id="kpi-orders" class="text-2xl font-bold text-brandNavy mt-1">2,501</h3>
+          <span class="text-xs font-medium text-slate-400 mt-1">7,500 Line Items</span>
+        </div>
+        <div class="kpi-card p-4">
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Avg Order Value (AOV)</p>
+          <h3 id="kpi-aov" class="text-2xl font-bold text-brandNavy mt-1">$1,793</h3>
+          <span class="text-xs font-medium text-slate-400 mt-1">Per Order Transaction</span>
+        </div>
+      </div>
+
+      <!-- CHARTS ROW 1 -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="chart-card p-5 lg:col-span-2">
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-slate-800 text-sm">Monthly Revenue Trajectory vs. Prior Year ($)</h4>
+            <span class="text-xs text-slate-400 font-medium">Time Intelligence</span>
+          </div>
+          <div class="h-64">
+            <canvas id="monthlyTrendChart"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card p-5">
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-bold text-slate-800 text-sm">Sales & Profit by Category</h4>
+            <span class="text-xs text-slate-400 font-medium">Catalog Hierarchy</span>
+          </div>
+          <div class="h-64">
+            <canvas id="categoryChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHARTS ROW 2 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="chart-card p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h4 class="font-bold text-slate-800 text-sm">Regional Sales Contribution (%)</h4>
+            <span class="text-xs text-slate-400 font-medium">4 Macro Territories</span>
+          </div>
+          <div class="h-56 flex items-center justify-center">
+            <canvas id="regionDonutChart"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card p-5">
+          <div class="flex justify-between items-center mb-3">
+            <h4 class="font-bold text-slate-800 text-sm">Sales Split by Customer Segment</h4>
+            <span class="text-xs text-slate-400 font-medium">Audience Breakdown</span>
+          </div>
+          <div class="h-56 flex items-center justify-center">
+            <canvas id="segmentDonutChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: SALES TRENDS & YOY -->
+    <section id="section-trends" class="space-y-6 hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="kpi-card p-4 border-l-4 border-brandBlue">
+          <p class="text-xs font-semibold text-slate-500 uppercase">2024 YoY Growth</p>
+          <h3 class="text-2xl font-bold text-brandNavy mt-1">+11.56%</h3>
+          <span class="text-xs text-emerald-600 font-semibold">From $1.395M to $1.556M</span>
+        </div>
+        <div class="kpi-card p-4 border-l-4 border-amber-500">
+          <p class="text-xs font-semibold text-slate-500 uppercase">2025 YoY Variance</p>
+          <h3 class="text-2xl font-bold text-brandNavy mt-1">-1.46%</h3>
+          <span class="text-xs text-rose-600 font-semibold">Slight decline to $1.533M</span>
+        </div>
+        <div class="kpi-card p-4 border-l-4 border-brandMint">
+          <p class="text-xs font-semibold text-slate-500 uppercase">Peak Sales Month</p>
+          <h3 class="text-2xl font-bold text-brandNavy mt-1">July ($436K)</h3>
+          <span class="text-xs text-slate-500 font-medium">Followed by Dec ($433K)</span>
+        </div>
+      </div>
+
+      <div class="chart-card p-5">
+        <h4 class="font-bold text-slate-800 text-sm mb-4">Cumulative Year-to-Date (YTD) Revenue Tracking Curve</h4>
+        <div class="h-72">
+          <canvas id="ytdLineChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: PRODUCT PERFORMANCE -->
+    <section id="section-products" class="space-y-6 hidden">
+      <div class="chart-card p-5">
+        <div class="flex justify-between items-center mb-4">
+          <div>
+            <h4 class="font-bold text-slate-800 text-sm">Top 10 Revenue-Generating Products ($)</h4>
+            <p class="text-xs text-slate-400">Notice laptops drive highest volume but lowest net margins (18%)</p>
+          </div>
+          <span class="text-xs bg-blue-50 text-brandBlue px-2.5 py-1 rounded font-semibold">DAX: TOPN(10)</span>
+        </div>
+        <div class="h-80">
+          <canvas id="topProductsChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: REGIONAL BREAKDOWN -->
+    <section id="section-regions" class="space-y-6 hidden">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="kpi-card p-4">
+          <p class="text-xs font-bold text-slate-400">SOUTH REGION</p>
+          <h4 class="text-xl font-bold text-brandNavy mt-1">$1,222,809</h4>
+          <p class="text-xs text-emerald-600 font-semibold mt-1">32.07% Margin | 27.3% Share</p>
+        </div>
+        <div class="kpi-card p-4">
+          <p class="text-xs font-bold text-slate-400">WEST REGION</p>
+          <h4 class="text-xl font-bold text-brandNavy mt-1">$1,203,688</h4>
+          <p class="text-xs text-emerald-600 font-semibold mt-1">31.17% Margin | 26.8% Share</p>
+        </div>
+        <div class="kpi-card p-4">
+          <p class="text-xs font-bold text-slate-400">CENTRAL REGION</p>
+          <h4 class="text-xl font-bold text-brandNavy mt-1">$1,171,767</h4>
+          <p class="text-xs text-emerald-600 font-semibold mt-1">32.03% Margin | 26.1% Share</p>
+        </div>
+        <div class="kpi-card p-4">
+          <p class="text-xs font-bold text-slate-400">EAST REGION (EXPANSION)</p>
+          <h4 class="text-xl font-bold text-brandNavy mt-1">$886,854</h4>
+          <p class="text-xs text-amber-600 font-semibold mt-1">31.63% Margin | 19.8% Share</p>
+        </div>
+      </div>
+
+      <div class="chart-card p-5">
+        <h4 class="font-bold text-slate-800 text-sm mb-4">Territory Sales vs. Profit Comparison ($)</h4>
+        <div class="h-72">
+          <canvas id="regionBarChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: STRATEGIC INSIGHTS & ROI -->
+    <section id="section-insights" class="space-y-6 hidden">
+      <div class="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-xl p-5 text-slate-800 shadow-sm">
+        <div class="flex items-start space-x-3">
+          <span class="text-2xl">🚨</span>
+          <div>
+            <h3 class="font-bold text-red-900 text-base">Key Diagnostic: The 50% Discount Trap (-$37,830 Leak)</h3>
+            <p class="text-sm text-red-800 mt-1 leading-relaxed">
+              Our data analysis proved that products sold at 0% discount deliver a healthy <strong>43.56% margin</strong>. 
+              However, deep discounting at 50% resulted in an outright loss of <strong>-13.20%</strong> across 773 orders. 
+              Restricting sales rep discounts to a maximum of 25% will immediately reclaim <strong>$55,000+ in annual profit</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="kpi-card p-5 space-y-2">
+          <div class="text-brandBlue font-bold text-sm">1. Laptop Margin Bundling</div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Laptops account for $1.32M (29%) of sales but carry only 18% margins due to high manufacturing costs. Mandatory bundling with high-margin webcams and headsets (45%+ margin) raises basket profitability.
+          </p>
+        </div>
+        <div class="kpi-card p-5 space-y-2">
+          <div class="text-brandBlue font-bold text-sm">2. East Coast Growth Strategy</div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            The East territory accounts for under 20% of sales despite holding major metros (NYC, Boston, Philadelphia). Reallocating 15% more marketing budget captures untapped market share without hurting profitability.
+          </p>
+        </div>
+        <div class="kpi-card p-5 space-y-2">
+          <div class="text-brandBlue font-bold text-sm">3. Seasonal Supply Staging</div>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Demand sharply surges in July and December. Procuring component inventory in May and October eliminates backorders and lowers average shipping turnaround below 3.0 days.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- JAVASCRIPT FOR TABS & INTERACTIVE CHARTS -->
+  <script>
+    // Tab switching
+    function switchTab(tabId) {
+      const tabs = ['exec', 'trends', 'products', 'regions', 'insights'];
+      tabs.forEach(t => {
+        document.getElementById('section-' + t).classList.add('hidden');
+        document.getElementById('tab-' + t).className = 'px-4 py-1.5 rounded-md text-slate-600 hover:bg-slate-100 transition';
+      });
+      document.getElementById('section-' + tabId).classList.remove('hidden');
+      document.getElementById('tab-' + tabId).className = 'px-4 py-1.5 rounded-md bg-brandBlue text-white shadow-sm transition';
+    }
+
+    // Interactive Year filter simulation
+    const yearData = {
+      'All': { sales: '$4,485,118', profit: '$1,423,288', margin: '31.73%', orders: '2,501', aov: '$1,793' },
+      '2023': { sales: '$1,395,100', profit: '$434,484', margin: '31.14%', orders: '1,751', aov: '$797' },
+      '2024': { sales: '$1,556,387', profit: '$501,602', margin: '32.23%', orders: '1,738', aov: '$896' },
+      '2025': { sales: '$1,533,631', profit: '$487,202', margin: '31.77%', orders: '1,740', aov: '$881' }
+    };
+
+    function filterYear(yr) {
+      ['All', '2023', '2024', '2025'].forEach(y => {
+        document.getElementById('btn-yr-' + y).className = 'px-3 py-1 rounded-md text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200';
+      });
+      document.getElementById('btn-yr-' + yr).className = 'px-3 py-1 rounded-md text-xs font-semibold bg-brandBlue text-white';
+
+      const d = yearData[yr];
+      document.getElementById('kpi-sales').innerText = d.sales;
+      document.getElementById('kpi-profit').innerText = d.profit;
+      document.getElementById('kpi-margin').innerText = d.margin;
+      document.getElementById('kpi-orders').innerText = d.orders;
+      document.getElementById('kpi-aov').innerText = d.aov;
+    }
+
+    // Chart.js Initializations
+    window.addEventListener('DOMContentLoaded', () => {
+      // 1. Monthly Trend
+      new Chart(document.getElementById('monthlyTrendChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [
+            { label: 'Current Sales ($)', data: [366558, 322029, 332971, 396189, 384867, 342657, 436754, 377847, 351713, 367303, 372707, 433517], borderColor: '#2563EB', backgroundColor: 'rgba(37,99,235,0.08)', fill: true, tension: 0.35 },
+            { label: 'Prior Year Sales ($)', data: [340000, 310000, 315000, 360000, 350000, 330000, 395000, 345000, 330000, 350000, 340000, 390000], borderColor: '#94A3B8', borderDash: [5, 5], fill: false, tension: 0.35 }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } } }
+      });
+
+      // 2. Category Bar
+      new Chart(document.getElementById('categoryChart'), {
+        type: 'bar',
+        data: {
+          labels: ['Technology', 'Furniture', 'Office Supplies'],
+          datasets: [
+            { label: 'Sales ($)', data: [2500000, 1350000, 635118], backgroundColor: '#2563EB' },
+            { label: 'Profit ($)', data: [680000, 470000, 273288], backgroundColor: '#10B981' }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      // 3. Region Donut
+      new Chart(document.getElementById('regionDonutChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['South (27.3%)', 'West (26.8%)', 'Central (26.1%)', 'East (19.8%)'],
+          datasets: [{ data: [1222809, 1203688, 1171767, 886854], backgroundColor: ['#2563EB', '#10B981', '#F59E0B', '#6366F1'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      // 4. Segment Donut
+      new Chart(document.getElementById('segmentDonutChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Consumer (51.4%)', 'Corporate (27.0%)', 'Home Office (21.6%)'],
+          datasets: [{ data: [2305698, 1211481, 967938], backgroundColor: ['#2563EB', '#0F172A', '#8B5CF6'] }]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      // 5. YTD Line
+      new Chart(document.getElementById('ytdLineChart'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [
+            { label: '2024 Cumulative Sales ($)', data: [125000, 245000, 375000, 520000, 675000, 810000, 975000, 1110000, 1240000, 1370000, 1450000, 1556387], borderColor: '#2563EB', tension: 0.2 },
+            { label: '2023 Cumulative Sales ($)', data: [110000, 220000, 335000, 465000, 600000, 725000, 870000, 990000, 1110000, 1225000, 1300000, 1395100], borderColor: '#94A3B8', borderDash: [4, 4], tension: 0.2 }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+
+      // 6. Top Products Horizontal Bar
+      new Chart(document.getElementById('topProductsChart'), {
+        type: 'bar',
+        data: {
+          labels: [
+            'ProBook Elite 15.6 Laptop', 'Horizon Pro 5G Flagship', 'Solid Oak Conference Table',
+            'UltraSlim Touch Laptop 14', 'Vision Smartphone 128GB', 'Electric Standing Desk',
+            'Executive Mesh Chair', 'Noise-Canceling Headphones', '5-Tier Storage Bookcase', '3-Drawer File Cabinet'
+          ],
+          datasets: [{
+            axis: 'y',
+            label: 'Sales Revenue ($)',
+            data: [749203, 644618, 613792, 567933, 524949, 318297, 182055, 136243, 114363, 95207],
+            backgroundColor: '#2563EB'
+          }]
+        },
+        options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false }
+      });
+
+      // 7. Regional Bar
+      new Chart(document.getElementById('regionBarChart'), {
+        type: 'bar',
+        data: {
+          labels: ['South', 'West', 'Central', 'East'],
+          datasets: [
+            { label: 'Sales ($)', data: [1222809, 1203688, 1171767, 886854], backgroundColor: '#2563EB' },
+            { label: 'Profit ($)', data: [392212, 375189, 375338, 280548], backgroundColor: '#10B981' }
+          ]
+        },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+    });
+  </script>
+</body>
+</html>
