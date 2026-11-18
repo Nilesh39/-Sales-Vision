@@ -1,0 +1,25 @@
+Product ID,Product Name,Category,Sub-Category,Unit Cost,Unit Price
+PROD-FUR-2001,Executive Mesh High-Back Chair,Furniture,Chairs,120.0,249.99
+PROD-FUR-2002,Ergonomic Task Swivel Chair,Furniture,Chairs,70.0,149.5
+PROD-FUR-2003,Electric Height-Adjustable Standing Desk,Furniture,Tables,210.0,429.0
+PROD-FUR-2004,Solid Oak Conference Table,Furniture,Tables,450.0,799.0
+PROD-FUR-2005,5-Tier Modular Storage Bookcase,Furniture,Bookcases,80.0,175.0
+PROD-FUR-2006,Modern Minimalist Wall Shelf Unit,Furniture,Bookcases,40.0,95.0
+PROD-FUR-2007,Dimmable LED Desk Lamp w/ USB,Furniture,Furnishings,15.0,42.0
+PROD-OFF-3001,Heavy Duty 3-Drawer File Cabinet,Office Supplies,Storage,65.0,139.99
+PROD-OFF-3002,Stackable Clear Document Bins 4-Pack,Office Supplies,Storage,12.0,29.99
+PROD-OFF-3003,Heavy-Duty Ring Binder 2-Inch,Office Supplies,Binders,3.5,9.99
+PROD-OFF-3004,Premium Multipurpose Copy Paper 5-Ream,Office Supplies,Paper,14.0,32.5
+PROD-OFF-3005,Eco-Recycled Printer Paper Case,Office Supplies,Paper,18.0,39.99
+PROD-OFF-3006,Compact Office Coffee Brewer,Office Supplies,Appliances,45.0,99.0
+PROD-OFF-3007,Professional Presentation Marker Set,Office Supplies,Art,6.0,18.5
+PROD-OFF-3008,Industrial Stapler & Heavy Staples Set,Office Supplies,Fasteners,8.5,22.0
+PROD-OFF-3009,Self-Seal Security Envelopes Box 500,Office Supplies,Envelopes,7.0,19.99
+PROD-TEC-1001,ProBook Elite 15.6 Laptop,Technology,Laptops,750.0,1099.99
+PROD-TEC-1002,UltraSlim Touch Laptop 14,Technology,Laptops,580.0,849.5
+PROD-TEC-1003,Vision Smartphone 128GB,Technology,Phones,390.0,699.0
+PROD-TEC-1004,Horizon Pro 5G Flagship,Technology,Phones,520.0,899.99
+PROD-TEC-1005,Wireless Noise-Canceling Headphones,Technology,Accessories,85.0,179.99
+PROD-TEC-1006,Ergonomic Mechanical Keyboard,Technology,Accessories,45.0,119.0
+PROD-TEC-1007,Fast Wireless Charging Dock,Technology,Accessories,18.0,49.99
+PROD-TEC-1008,Ultra HD 4K Webcam w/ Mic,Technology,Accessories,35.0,89.99

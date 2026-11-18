@@ -1,0 +1,43 @@
+/*
+========================================================================================
+SalesVision - Dynamic DAX Calendar Dimension Table
+Project: SalesVision - Sales Performance & Business Intelligence Dashboard
+Author: Senior Power BI Developer & Business Intelligence Analyst
+Purpose: Production-grade Date Dimension table enabling robust Time Intelligence in DAX.
+========================================================================================
+How to use in Power BI Desktop:
+1. Go to the "Modeling" tab in the top ribbon.
+2. Click "New Table".
+3. Paste the DAX code below into the formula bar.
+4. Right-click the new "Dim_Calendar" table -> Click "Mark as Date Table" -> Select [Date].
+5. In Data view:
+   - Select "Month Name" -> Click "Sort by Column" -> Choose "Month Number".
+   - Select "Month Short" -> Click "Sort by Column" -> Choose "Month Number".
+   - Select "Year-Month" -> Click "Sort by Column" -> Choose "Year Month Number".
+========================================================================================
+*/
+
+Dim_Calendar = 
+VAR MinYear = YEAR(MIN(Fact_Orders[Order Date]))
+VAR MaxYear = YEAR(MAX(Fact_Orders[Order Date]))
+VAR StartDate = DATE(MinYear, 1, 1)
+VAR EndDate = DATE(MaxYear, 12, 31)
+
+RETURN
+ADDCOLUMNS(
+    CALENDAR(StartDate, EndDate),
+    "Year", YEAR([Date]),
+    "Year Number", INT(FORMAT([Date], "YYYY")),
+    "Quarter", "Q" & FORMAT([Date], "Q"),
+    "Quarter Year", "Q" & FORMAT([Date], "Q") & " " & FORMAT([Date], "YYYY"),
+    "Month Number", MONTH([Date]),
+    "Month Name", FORMAT([Date], "MMMM"),
+    "Month Short", FORMAT([Date], "MMM"),
+    "Year Month Number", INT(FORMAT([Date], "YYYYMM")),
+    "Year-Month", FORMAT([Date], "YYYY-MMM"),
+    "Day of Month", DAY([Date]),
+    "Day of Week Number", WEEKDAY([Date], 2), -- 1 = Monday, 7 = Sunday
+    "Day of Week", FORMAT([Date], "dddd"),
+    "Day of Week Short", FORMAT([Date], "ddd"),
+    "Is Weekend", IF(WEEKDAY([Date], 2) IN {6, 7}, "Weekend", "Weekday")
+)

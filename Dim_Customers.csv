@@ -1,0 +1,301 @@
+Customer ID,Customer Name,Segment
+CUST-1001,Aarav Sharma,Corporate
+CUST-1002,Aditi Rao,Consumer
+CUST-1003,Alexander Wright,Consumer
+CUST-1004,Amanda Jones,Consumer
+CUST-1005,Ananya Patel,Corporate
+CUST-1006,Andrew Miller,Corporate
+CUST-1007,Benjamin Scott,Home Office
+CUST-1008,Bhavna Joshi,Consumer
+CUST-1009,Carlos Mendez,Consumer
+CUST-1010,Catherine Davis,Consumer
+CUST-1011,Chloe Bennett,Consumer
+CUST-1012,Daniel Evans,Consumer
+CUST-1013,David Smith,Consumer
+CUST-1014,Devendra Singh,Consumer
+CUST-1015,Divya Nair,Corporate
+CUST-1016,Emily Clark,Corporate
+CUST-1017,Emma Wilson,Consumer
+CUST-1018,Ethan Taylor,Corporate
+CUST-1019,Grace Thomas,Corporate
+CUST-1020,Harish Kumar,Consumer
+CUST-1021,Henry White,Corporate
+CUST-1022,Ishaan Verma,Corporate
+CUST-1023,Jacob Harris,Consumer
+CUST-1024,James Martin,Consumer
+CUST-1025,Jessica Hall,Home Office
+CUST-1026,Jonathan Allen,Consumer
+CUST-1027,Kavita Reddy,Consumer
+CUST-1028,Liam Johnson,Consumer
+CUST-1029,Lucas Anderson,Home Office
+CUST-1030,Manish Gupta,Corporate
+CUST-1031,Marcus Robinson,Corporate
+CUST-1032,Mia Walker,Corporate
+CUST-1033,Michael Brown,Corporate
+CUST-1034,Neha Kapoor,Home Office
+CUST-1035,Noah Martinez,Consumer
+CUST-1036,Oliver Garcia,Corporate
+CUST-1037,Pooja Iyer,Home Office
+CUST-1038,Pranav Mukherjee,Corporate
+CUST-1039,Priya Menon,Home Office
+CUST-1040,Rahul Sen,Corporate
+CUST-1041,Rohan Mehra,Corporate
+CUST-1042,Samantha King,Consumer
+CUST-1043,Sanjay Dutt,Consumer
+CUST-1044,Sarah Johnson,Consumer
+CUST-1045,Sneha Roy,Consumer
+CUST-1046,Sophia Baker,Consumer
+CUST-1047,Sunil Narang,Consumer
+CUST-1048,Tanvi Saxena,Consumer
+CUST-1049,Vikram Malhotra,Corporate
+CUST-1050,William Lee,Consumer
+CUST-1051,Aarav Sharma,Consumer
+CUST-1052,Aditi Rao,Consumer
+CUST-1053,Alexander Wright,Consumer
+CUST-1054,Amanda Jones,Home Office
+CUST-1055,Ananya Patel,Corporate
+CUST-1056,Andrew Miller,Corporate
+CUST-1057,Benjamin Scott,Consumer
+CUST-1058,Bhavna Joshi,Corporate
+CUST-1059,Carlos Mendez,Consumer
+CUST-1060,Catherine Davis,Consumer
+CUST-1061,Chloe Bennett,Home Office
+CUST-1062,Daniel Evans,Corporate
+CUST-1063,David Smith,Corporate
+CUST-1064,Devendra Singh,Corporate
+CUST-1065,Divya Nair,Home Office
+CUST-1066,Emily Clark,Corporate
+CUST-1067,Emma Wilson,Consumer
+CUST-1068,Ethan Taylor,Consumer
+CUST-1069,Grace Thomas,Consumer
+CUST-1070,Harish Kumar,Consumer
+CUST-1071,Henry White,Consumer
+CUST-1072,Ishaan Verma,Home Office
+CUST-1073,Jacob Harris,Home Office
+CUST-1074,James Martin,Consumer
+CUST-1075,Jessica Hall,Corporate
+CUST-1076,Jonathan Allen,Consumer
+CUST-1077,Kavita Reddy,Home Office
+CUST-1078,Liam Johnson,Consumer
+CUST-1079,Lucas Anderson,Consumer
+CUST-1080,Manish Gupta,Consumer
+CUST-1081,Marcus Robinson,Corporate
+CUST-1082,Mia Walker,Consumer
+CUST-1083,Michael Brown,Corporate
+CUST-1084,Neha Kapoor,Home Office
+CUST-1085,Noah Martinez,Consumer
+CUST-1086,Oliver Garcia,Consumer
+CUST-1087,Pooja Iyer,Home Office
+CUST-1088,Pranav Mukherjee,Consumer
+CUST-1089,Priya Menon,Consumer
+CUST-1090,Rahul Sen,Consumer
+CUST-1091,Rohan Mehra,Consumer
+CUST-1092,Samantha King,Corporate
+CUST-1093,Sanjay Dutt,Corporate
+CUST-1094,Sarah Johnson,Consumer
+CUST-1095,Sneha Roy,Consumer
+CUST-1096,Sophia Baker,Consumer
+CUST-1097,Sunil Narang,Home Office
+CUST-1098,Tanvi Saxena,Corporate
+CUST-1099,Vikram Malhotra,Home Office
+CUST-1100,William Lee,Home Office
+CUST-1101,Aarav Sharma,Consumer
+CUST-1102,Aditi Rao,Corporate
+CUST-1103,Alexander Wright,Corporate
+CUST-1104,Amanda Jones,Corporate
+CUST-1105,Ananya Patel,Consumer
+CUST-1106,Andrew Miller,Corporate
+CUST-1107,Benjamin Scott,Consumer
+CUST-1108,Bhavna Joshi,Consumer
+CUST-1109,Carlos Mendez,Consumer
+CUST-1110,Catherine Davis,Home Office
+CUST-1111,Chloe Bennett,Home Office
+CUST-1112,Daniel Evans,Consumer
+CUST-1113,David Smith,Consumer
+CUST-1114,Devendra Singh,Consumer
+CUST-1115,Divya Nair,Home Office
+CUST-1116,Emily Clark,Home Office
+CUST-1117,Emma Wilson,Consumer
+CUST-1118,Ethan Taylor,Corporate
+CUST-1119,Grace Thomas,Corporate
+CUST-1120,Harish Kumar,Consumer
+CUST-1121,Henry White,Corporate
+CUST-1122,Ishaan Verma,Corporate
+CUST-1123,Jacob Harris,Corporate
+CUST-1124,James Martin,Corporate
+CUST-1125,Jessica Hall,Consumer
+CUST-1126,Jonathan Allen,Consumer
+CUST-1127,Kavita Reddy,Consumer
+CUST-1128,Liam Johnson,Home Office
+CUST-1129,Lucas Anderson,Home Office
+CUST-1130,Manish Gupta,Home Office
+CUST-1131,Marcus Robinson,Consumer
+CUST-1132,Mia Walker,Consumer
+CUST-1133,Michael Brown,Home Office
+CUST-1134,Neha Kapoor,Home Office
+CUST-1135,Noah Martinez,Consumer
+CUST-1136,Oliver Garcia,Consumer
+CUST-1137,Pooja Iyer,Consumer
+CUST-1138,Pranav Mukherjee,Corporate
+CUST-1139,Priya Menon,Corporate
+CUST-1140,Rahul Sen,Consumer
+CUST-1141,Rohan Mehra,Consumer
+CUST-1142,Samantha King,Corporate
+CUST-1143,Sanjay Dutt,Consumer
+CUST-1144,Sarah Johnson,Home Office
+CUST-1145,Sneha Roy,Consumer
+CUST-1146,Sophia Baker,Consumer
+CUST-1147,Sunil Narang,Corporate
+CUST-1148,Tanvi Saxena,Corporate
+CUST-1149,Vikram Malhotra,Consumer
+CUST-1150,William Lee,Consumer
+CUST-1151,Aarav Sharma,Home Office
+CUST-1152,Aditi Rao,Corporate
+CUST-1153,Alexander Wright,Consumer
+CUST-1154,Amanda Jones,Consumer
+CUST-1155,Ananya Patel,Consumer
+CUST-1156,Andrew Miller,Consumer
+CUST-1157,Benjamin Scott,Consumer
+CUST-1158,Bhavna Joshi,Corporate
+CUST-1159,Carlos Mendez,Consumer
+CUST-1160,Catherine Davis,Consumer
+CUST-1161,Chloe Bennett,Consumer
+CUST-1162,Daniel Evans,Corporate
+CUST-1163,David Smith,Consumer
+CUST-1164,Devendra Singh,Home Office
+CUST-1165,Divya Nair,Home Office
+CUST-1166,Emily Clark,Consumer
+CUST-1167,Emma Wilson,Consumer
+CUST-1168,Ethan Taylor,Corporate
+CUST-1169,Grace Thomas,Consumer
+CUST-1170,Harish Kumar,Consumer
+CUST-1171,Henry White,Home Office
+CUST-1172,Ishaan Verma,Corporate
+CUST-1173,Jacob Harris,Consumer
+CUST-1174,James Martin,Corporate
+CUST-1175,Jessica Hall,Corporate
+CUST-1176,Jonathan Allen,Consumer
+CUST-1177,Kavita Reddy,Consumer
+CUST-1178,Liam Johnson,Consumer
+CUST-1179,Lucas Anderson,Consumer
+CUST-1180,Manish Gupta,Consumer
+CUST-1181,Marcus Robinson,Corporate
+CUST-1182,Mia Walker,Corporate
+CUST-1183,Michael Brown,Home Office
+CUST-1184,Neha Kapoor,Consumer
+CUST-1185,Noah Martinez,Consumer
+CUST-1186,Oliver Garcia,Consumer
+CUST-1187,Pooja Iyer,Home Office
+CUST-1188,Pranav Mukherjee,Consumer
+CUST-1189,Priya Menon,Consumer
+CUST-1190,Rahul Sen,Consumer
+CUST-1191,Rohan Mehra,Consumer
+CUST-1192,Samantha King,Consumer
+CUST-1193,Sanjay Dutt,Consumer
+CUST-1194,Sarah Johnson,Home Office
+CUST-1195,Sneha Roy,Consumer
+CUST-1196,Sophia Baker,Home Office
+CUST-1197,Sunil Narang,Corporate
+CUST-1198,Tanvi Saxena,Consumer
+CUST-1199,Vikram Malhotra,Home Office
+CUST-1200,William Lee,Home Office
+CUST-1201,Aarav Sharma,Home Office
+CUST-1202,Aditi Rao,Home Office
+CUST-1203,Alexander Wright,Home Office
+CUST-1204,Amanda Jones,Consumer
+CUST-1205,Ananya Patel,Consumer
+CUST-1206,Andrew Miller,Consumer
+CUST-1207,Benjamin Scott,Consumer
+CUST-1208,Bhavna Joshi,Consumer
+CUST-1209,Carlos Mendez,Consumer
+CUST-1210,Catherine Davis,Home Office
+CUST-1211,Chloe Bennett,Consumer
+CUST-1212,Daniel Evans,Corporate
+CUST-1213,David Smith,Consumer
+CUST-1214,Devendra Singh,Consumer
+CUST-1215,Divya Nair,Home Office
+CUST-1216,Emily Clark,Home Office
+CUST-1217,Emma Wilson,Corporate
+CUST-1218,Ethan Taylor,Corporate
+CUST-1219,Grace Thomas,Consumer
+CUST-1220,Harish Kumar,Consumer
+CUST-1221,Henry White,Home Office
+CUST-1222,Ishaan Verma,Corporate
+CUST-1223,Jacob Harris,Corporate
+CUST-1224,James Martin,Corporate
+CUST-1225,Jessica Hall,Consumer
+CUST-1226,Jonathan Allen,Corporate
+CUST-1227,Kavita Reddy,Consumer
+CUST-1228,Liam Johnson,Home Office
+CUST-1229,Lucas Anderson,Consumer
+CUST-1230,Manish Gupta,Home Office
+CUST-1231,Marcus Robinson,Consumer
+CUST-1232,Mia Walker,Consumer
+CUST-1233,Michael Brown,Corporate
+CUST-1234,Neha Kapoor,Corporate
+CUST-1235,Noah Martinez,Consumer
+CUST-1236,Oliver Garcia,Consumer
+CUST-1237,Pooja Iyer,Home Office
+CUST-1238,Pranav Mukherjee,Consumer
+CUST-1239,Priya Menon,Corporate
+CUST-1240,Rahul Sen,Corporate
+CUST-1241,Rohan Mehra,Consumer
+CUST-1242,Samantha King,Corporate
+CUST-1243,Sanjay Dutt,Corporate
+CUST-1244,Sarah Johnson,Home Office
+CUST-1245,Sneha Roy,Consumer
+CUST-1246,Sophia Baker,Corporate
+CUST-1247,Sunil Narang,Consumer
+CUST-1248,Tanvi Saxena,Consumer
+CUST-1249,Vikram Malhotra,Corporate
+CUST-1250,William Lee,Consumer
+CUST-1251,Aarav Sharma,Consumer
+CUST-1252,Aditi Rao,Corporate
+CUST-1253,Alexander Wright,Consumer
+CUST-1254,Amanda Jones,Consumer
+CUST-1255,Ananya Patel,Home Office
+CUST-1256,Andrew Miller,Home Office
+CUST-1257,Benjamin Scott,Consumer
+CUST-1258,Bhavna Joshi,Consumer
+CUST-1259,Carlos Mendez,Consumer
+CUST-1260,Catherine Davis,Home Office
+CUST-1261,Chloe Bennett,Home Office
+CUST-1262,Daniel Evans,Home Office
+CUST-1263,David Smith,Consumer
+CUST-1264,Devendra Singh,Consumer
+CUST-1265,Divya Nair,Home Office
+CUST-1266,Emily Clark,Corporate
+CUST-1267,Emma Wilson,Corporate
+CUST-1268,Ethan Taylor,Home Office
+CUST-1269,Grace Thomas,Corporate
+CUST-1270,Harish Kumar,Consumer
+CUST-1271,Henry White,Corporate
+CUST-1272,Ishaan Verma,Consumer
+CUST-1273,Jacob Harris,Corporate
+CUST-1274,James Martin,Home Office
+CUST-1275,Jessica Hall,Consumer
+CUST-1276,Jonathan Allen,Consumer
+CUST-1277,Kavita Reddy,Consumer
+CUST-1278,Liam Johnson,Corporate
+CUST-1279,Lucas Anderson,Consumer
+CUST-1280,Manish Gupta,Corporate
+CUST-1281,Marcus Robinson,Corporate
+CUST-1282,Mia Walker,Consumer
+CUST-1283,Michael Brown,Corporate
+CUST-1284,Neha Kapoor,Consumer
+CUST-1285,Noah Martinez,Consumer
+CUST-1286,Oliver Garcia,Home Office
+CUST-1287,Pooja Iyer,Home Office
+CUST-1288,Pranav Mukherjee,Consumer
+CUST-1289,Priya Menon,Consumer
+CUST-1290,Rahul Sen,Consumer
+CUST-1291,Rohan Mehra,Consumer
+CUST-1292,Samantha King,Corporate
+CUST-1293,Sanjay Dutt,Corporate
+CUST-1294,Sarah Johnson,Consumer
+CUST-1295,Sneha Roy,Corporate
+CUST-1296,Sophia Baker,Corporate
+CUST-1297,Sunil Narang,Consumer
+CUST-1298,Tanvi Saxena,Consumer
+CUST-1299,Vikram Malhotra,Consumer
+CUST-1300,William Lee,Home Office

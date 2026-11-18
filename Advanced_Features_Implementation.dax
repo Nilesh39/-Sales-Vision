@@ -1,0 +1,82 @@
+/*
+========================================================================================
+SalesVision - Phase 6: Advanced DAX Logic (Dynamic Titles & Conditional Formatting)
+Project: SalesVision - Sales Performance & Business Intelligence Dashboard
+Author: Senior Power BI Developer & Business Intelligence Analyst
+========================================================================================
+*/
+
+// =====================================================================================
+// 1. DYNAMIC TITLES (Context-Aware Chart Titles)
+// =====================================================================================
+
+// Dynamic title for Category Sales chart that reflects active category and region filters
+Dynamic Category Title = 
+VAR SelectedCat = SELECTEDVALUE(Dim_Products[Category], "All Categories")
+VAR SelectedReg = SELECTEDVALUE(Dim_Geography[Region], "All Regions")
+VAR SelectedYr = SELECTEDVALUE(Dim_Calendar[Year], "2023-2025")
+RETURN
+"Revenue & Margin Breakdown | Category: " & SelectedCat & " | Region: " & SelectedReg & " (" & SelectedYr & ")"
+
+
+// Dynamic title for Regional Territory Map
+Dynamic Regional Map Title = 
+VAR SelectedYr = SELECTEDVALUE(Dim_Calendar[Year], "All Historical Years")
+VAR TotalRev = [Total Sales]
+RETURN
+"Geographic Sales Distribution (" & SelectedYr & ") - Total: " & FORMAT(TotalRev, "$#,##0")
+
+
+// Dynamic Drill-Through Page Header
+Drillthrough Product Header = 
+VAR CurrentProduct = SELECTEDVALUE(Dim_Products[Product Name], "No Product Selected")
+VAR CurrentCat = SELECTEDVALUE(Dim_Products[Category], "")
+RETURN
+"Deep-Dive Diagnostics: " & CurrentProduct & " (" & CurrentCat & ")"
+
+
+// =====================================================================================
+// 2. CONDITIONAL FORMATTING COLOR CODES (HEX-Driven Formatting)
+// =====================================================================================
+
+// Color rule for Sales Growth % KPI Card:
+// Positive Growth -> Emerald Green (#10B981)
+// Negative Growth -> Coral Red (#EF4444)
+// Neutral / Blank -> Slate Grey (#64748B)
+Sales Growth Color KPI = 
+VAR Growth = [Sales Growth %]
+RETURN
+SWITCH(
+    TRUE(),
+    ISBLANK(Growth), "#64748B",
+    Growth >= 0, "#10B981",
+    Growth < 0, "#EF4444",
+    "#64748B"
+)
+
+
+// Background Color rule for Profit Margin % in Matrix Tables:
+// Margin >= 35% -> Light Emerald (#D1FAE5)
+// Margin between 25% and 35% -> Light Blue (#DBEAFE)
+// Margin between 15% and 25% -> Light Yellow (#FEF3C7)
+// Margin < 15% -> Soft Crimson (#FEE2E2)
+Profit Margin Background Color = 
+VAR Margin = [Profit Margin %]
+RETURN
+SWITCH(
+    TRUE(),
+    ISBLANK(Margin), "#FFFFFF",
+    Margin >= 0.35, "#D1FAE5",
+    Margin >= 0.25, "#DBEAFE",
+    Margin >= 0.15, "#FEF3C7",
+    "#FEE2E2"
+)
+
+
+// Text Color rule for Profit Margin % in Matrix Tables:
+// Margin < 15% -> Dark Red (#991B1B)
+// Otherwise -> Dark Slate (#0F172A)
+Profit Margin Text Color = 
+VAR Margin = [Profit Margin %]
+RETURN
+IF(Margin < 0.15, "#991B1B", "#0F172A")

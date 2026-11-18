@@ -1,0 +1,172 @@
+/*
+========================================================================================
+SalesVision - Production DAX Measures Library
+Project: SalesVision - Sales Performance & Business Intelligence Dashboard
+Author: Senior Power BI Developer & Business Intelligence Analyst
+========================================================================================
+Instructions:
+1. In Power BI Desktop -> Home tab -> Click "Enter Data".
+2. Name the table: "_Measures" and click "Load" (leaving the default blank Column1).
+3. Right-click "_Measures" -> Click "New Measure".
+4. Copy and paste each measure below.
+5. Once your first measure is created, right-click and delete "Column1". Power BI will
+   automatically assign the Calculator icon to "_Measures" and pin it to the top!
+========================================================================================
+*/
+
+// =====================================================================================
+// FOLDER: 01 - Core Metrics
+// =====================================================================================
+
+// 1. Total Sales (Net Revenue)
+// Format: Currency ($#,##0.00)
+Total Sales = 
+SUM(Fact_Orders[Sales])
+
+
+// 2. Total Profit (Net Bottom-Line Margin)
+// Format: Currency ($#,##0.00)
+Total Profit = 
+SUM(Fact_Orders[Profit])
+
+
+// 3. Total Orders (Distinct Order Count)
+// Format: Whole Number (#,##0)
+Total Orders = 
+DISTINCTCOUNT(Fact_Orders[Order ID])
+
+
+// 4. Total Quantity (Total Units Sold)
+// Format: Whole Number (#,##0)
+Total Quantity = 
+SUM(Fact_Orders[Quantity])
+
+
+// 5. Total Cost (Cost of Goods Sold - COGS)
+// Format: Currency ($#,##0.00)
+Total Cost = 
+SUMX(Fact_Orders, Fact_Orders[Quantity] * RELATED(Dim_Products[Unit Cost]))
+
+
+// =====================================================================================
+// FOLDER: 02 - Performance Ratios
+// =====================================================================================
+
+// 6. Average Order Value (AOV)
+// Measures the average spend per unique customer transaction.
+// Format: Currency ($#,##0.00)
+Average Order Value = 
+DIVIDE([Total Sales], [Total Orders], 0)
+
+
+// 7. Profit Margin %
+// Measures overall operational profitability ratio.
+// Format: Percentage (0.00%)
+Profit Margin % = 
+DIVIDE([Total Profit], [Total Sales], 0)
+
+
+// 8. Average Shipping Turnaround Days
+// Measures operational delivery lead time.
+// Format: Decimal Number (0.0 "Days")
+Average Shipping Turnaround Days = 
+AVERAGE(Fact_Orders[Shipping Days])
+
+
+// =====================================================================================
+// FOLDER: 03 - Time Intelligence
+// =====================================================================================
+
+// 9. Monthly Sales
+// Dynamic sales calculated across the active month filter context.
+// Format: Currency ($#,##0.00)
+Monthly Sales = 
+CALCULATE(
+    [Total Sales],
+    KEEPFILTERS(VALUES(Dim_Calendar[Month Number]))
+)
+
+
+// 10. Previous Year Sales (PY Sales)
+// Shifts the filter context back by exactly 1 calendar year.
+// Format: Currency ($#,##0.00)
+Previous Year Sales = 
+CALCULATE(
+    [Total Sales],
+    SAMEPERIODLASTYEAR(Dim_Calendar[Date])
+)
+
+
+// 11. YoY Sales Variance ($)
+// Dollar difference between current period and prior year period.
+// Format: Currency ($#,##0.00)
+YoY Sales Variance = 
+VAR CurrentSales = [Total Sales]
+VAR PriorYearSales = [Previous Year Sales]
+RETURN
+IF(
+    ISBLANK(PriorYearSales),
+    BLANK(),
+    CurrentSales - PriorYearSales
+)
+
+
+// 12. Sales Growth % (Year-over-Year Growth)
+// Safe division comparing current period sales to prior year sales.
+// Format: Percentage (0.00%)
+Sales Growth % = 
+VAR CurrentSales = [Total Sales]
+VAR PriorYearSales = [Previous Year Sales]
+VAR Growth = DIVIDE(CurrentSales - PriorYearSales, PriorYearSales, BLANK())
+RETURN
+Growth
+
+
+// 13. Year-to-Date Sales (YTD Sales)
+// Cumulative sales from January 1st to the selected date of the current year.
+// Format: Currency ($#,##0.00)
+Year-to-Date Sales = 
+TOTALYTD(
+    [Total Sales],
+    Dim_Calendar[Date]
+)
+
+
+// 14. Prior Year YTD Sales
+// Cumulative sales for the exact matching period in the preceding calendar year.
+// Format: Currency ($#,##0.00)
+Prior Year YTD Sales = 
+TOTALYTD(
+    [Total Sales],
+    SAMEPERIODLASTYEAR(Dim_Calendar[Date])
+)
+
+
+// =====================================================================================
+// FOLDER: 04 - Rankings & Dynamic Visual Measures
+// =====================================================================================
+
+// 15. Top 10 Products Sales
+// Dynamically computes total sales restricted strictly to the top 10 products.
+// Format: Currency ($#,##0.00)
+Top 10 Products Sales = 
+CALCULATE(
+    [Total Sales],
+    KEEPFILTERS(
+        TOPN(
+            10,
+            ALLSELECTED(Dim_Products[Product Name]),
+            [Total Sales],
+            DESC
+        )
+    )
+)
+
+
+// 16. Dynamic KPI Sales Card Title
+// Provides dynamic narrative for executive cards based on active slicer selections.
+Sales KPI Card Subtitle = 
+VAR MinDate = MIN(Dim_Calendar[Date])
+VAR MaxDate = MAX(Dim_Calendar[Date])
+RETURN
+"Period: " & FORMAT(MinDate, "MMM YYYY") & " - " & FORMAT(MaxDate, "MMM YYYY")
